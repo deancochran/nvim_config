@@ -7,19 +7,9 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
-        -- or                            , branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
-
-
-    use 'folke/tokyonight.nvim'
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
-    }
-
+    use "tpope/vim-fugitive"
+    use { 'nvim-telescope/telescope.nvim', tag = '0.1.1', requires = { { 'nvim-lua/plenary.nvim' } } }
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
@@ -42,19 +32,12 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' }, -- Optional
         }
     }
-
-    use {
+    use { 
         'glepnir/dashboard-nvim',
-        event = 'VimEnter',
-        config = function()
-            require('dashboard').setup {
-                -- config
-            }
-        end,
+        event = 'VimEnter', 
+        config = function() require('dashboard').setup() end, 
         requires = { 'nvim-tree/nvim-web-devicons' }
     }
-    use { "akinsho/toggleterm.nvim", tag = '*', config = function()
-        require("toggleterm").setup()
-    end }
-    use "tpope/vim-fugitive"
+    use "akinsho/toggleterm.nvim"
+    use 'folke/tokyonight.nvim' 
 end)
