@@ -31,10 +31,10 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leamer>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/deancochran/packer.lua<CR>");
 
 -- shout out current file
-vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
-    print('refresh')
-end)
+-- vim.keymap.set("n", "<leader><leader>", function()
+--     vim.cmd("so")
+--     print('refresh')
+-- end)
 
 vim.keymap.set("n","<leader>t", function () vim.cmd("tabnew") vim.cmd("Ex") print("new tab") end)
 vim.keymap.set("n","<leader>]", function () vim.cmd("tabnext") end)
@@ -52,6 +52,6 @@ vim.keymap.set("n","<leader>L", "<C-w>L" )
 
 
 vim.keymap.set("n","<leader>vs", function () vim.cmd("vsplit") end )
-vim.keymap.set("n","<leader>hs", function () vim.cmd("vsplit") end )
+vim.keymap.set("n","<leader>hs", function () vim.cmd("split") end )
 
 vim.keymap.set('n', '<C-j>', function () vim.cmd("ToggleTerm") end)

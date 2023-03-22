@@ -38,6 +38,13 @@ return require('packer').startup(function(use)
         config = function() require('dashboard').setup() end, 
         requires = { 'nvim-tree/nvim-web-devicons' }
     }
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
     use "akinsho/toggleterm.nvim"
+    use 'm4xshen/autoclose.nvim'
     use 'folke/tokyonight.nvim' 
 end)
