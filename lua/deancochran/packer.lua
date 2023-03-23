@@ -38,20 +38,13 @@ return require('packer').startup(function(use)
         config = function() require('dashboard').setup() end, 
         requires = { 'nvim-tree/nvim-web-devicons' }
     }
-<<<<<<< HEAD
-=======
    use "akinsho/toggleterm.nvim"
->>>>>>> e5684ea (updated leader hs to split horizontally)
     use {
         'numToStr/Comment.nvim',
         config = function()
             require('Comment').setup()
         end
     }
-<<<<<<< HEAD
-    use "akinsho/toggleterm.nvim"
     use 'm4xshen/autoclose.nvim'
-=======
->>>>>>> e5684ea (updated leader hs to split horizontally)
     use 'folke/tokyonight.nvim' 
 end)
