@@ -1,5 +1,5 @@
 -- Lua
-vim.cmd[[colorscheme tokyonight]]
+vim.cmd[[colorscheme tokyonight-storm]]
 
 -- Sets colors to line numbers Above, Current and Below  in this order
 function LineNumberColors()
@@ -9,3 +9,4 @@ function LineNumberColors()
 end
 
 LineNumberColors()
+vim.opt.colorcolumn = "80"
