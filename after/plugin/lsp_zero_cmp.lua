@@ -22,7 +22,52 @@ end)
 
 lsp.setup()
 
-require("null-ls").setup()
+local null_ls = require("null-ls")
+-- code action sources
+local code_actions = null_ls.builtins.code_actions
+
+-- diagnostic sources
+local diagnostics = null_ls.builtins.diagnostics
+
+-- formatting sources
+local formatting = null_ls.builtins.formatting
+
+-- completion sources
+local completion = null_ls.builtins.completion
+-- 
+
+
+-- hover sources
+local onHover = {
+  null_ls.builtins.diagnostics.cspell, 
+  null_ls.builtins.code_actions.cspell.with({
+    config = {
+      on_success = function(cspell_config_file, params) -- format the cspell config file 
+        os.execute(
+        string.format( "cat %s | jq -S '.words |= sort' | tee %s > /dev/null", cspell_config_file, cspell_config_file)
+        )
+      end
+    },
+  }),
+  null_ls.builtins.code_actions.eslint,
+  null_ls.builtins.code_actions.proselint,
+
+  null_ls.builtins.hover.dictionary,
+  null_ls.builtins.hover.printenv,
+
+  null_ls.builtins.completion.luasnip,
+  null_ls.builtins.diagnostics.cspell,
+  null_ls.builtins.diagnostics.dotenv_linter,
+  null_ls.builtins.diagnostics.eslint,
+  null_ls.builtins.formatting.prettier.with({
+        extra_filetypes = { "svelte" },
+    }),
+
+  disabled_filetypes={},
+  filetypes={}
+}
+
+null_ls.setup({ sources = onHover })
 
 require("mason-null-ls").setup({
 	ensure_installed = nil,
